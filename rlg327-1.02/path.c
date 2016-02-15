@@ -33,10 +33,12 @@ void dijkstra_nontunneling(dungeon_t *d){
     			v->position[dim_x] = x; 
     			v->hardness = d->hardness[y][x];
     			v->distance = 255;
-        else {
-          d->tunel[y][x] = 0;
+          binheap_insert(h, v);
         }
-    		binheap_insert(h, v);
+        else {
+          d->tunel[y][x] = '0';
+        }
+
     		//}
  		}
 	}
