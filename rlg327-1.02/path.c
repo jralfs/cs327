@@ -19,8 +19,7 @@ int32_t compare_data(const void *key, const void *with){
   return 0;
 }
 
-int32_t data_delete(void *){
-  return 0;
+void data_delete(void *){
 }
 
 void dijkstra_nontunneling(dungeon_t *d){
