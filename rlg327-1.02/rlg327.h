@@ -34,7 +34,7 @@ typedef struct room {
 typedef struct dungeon {
   uint32_t num_rooms;
   room_t *rooms;
-  terrain_type_t map[DUNGEON_Y][DUNGEON_X];                                */
+  terrain_type_t map[DUNGEON_Y][DUNGEON_X];          
   uint8_t hardness[DUNGEON_Y][DUNGEON_X];
   char nonTunnel[DUNGEON_Y][DUNGEON_X];
   char tunnel[DUNGEON_Y][DUNGEON_X];

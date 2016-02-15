@@ -6,17 +6,6 @@
 #include "binheap.h"
 #include "rlg327.h"
 
-#define DUNGEON_X              80
-#define DUNGEON_Y              21
-
-typedef enum dim {
-  dim_x,
-  dim_y,
-  num_dims
-} dim_t;
-
-
-
 typedef struct vertex {
 	pair_t position;
 	uint32_t hardness;
