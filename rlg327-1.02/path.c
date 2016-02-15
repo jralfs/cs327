@@ -12,8 +12,6 @@ typedef struct vertex {
 	uint32_t distance; 
 }vertex_t;
 
-void findPC(dungeon_t *d){
-}
 
 int32_t compare_data(const void *key, const void *with){
   return 0;
@@ -27,21 +25,18 @@ void dijkstra_nontunneling(dungeon_t *d){
   binheap_t *h =  malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
 
-	findPC(d);
-//  pair_t *pc;
-//  pc[dim_x] = 5;
-//  pc[dim_y] = 5;
-
 	for (y = 0; y < DUNGEON_Y; y++) {
     	for (x = 0; x < DUNGEON_X; x++) {
-    		//if(x != pc[dim_x] && y != pc[dim_y]){
+    		if(x != d->PC[dim_x] && y != d->PC[dim_x]){
     			vertex_t *v = malloc(sizeof(*v));
     			v->position[dim_y] = y;
     			v->position[dim_x] = x; 
     			v->hardness = d->hardness[y][x];
     			v->distance = 255;
-
-    			binheap_insert(h, v);
+        else {
+          d->tunel[y][x] = 0;
+        }
+    		binheap_insert(h, v);
     		//}
  		}
 	}

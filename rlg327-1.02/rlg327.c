@@ -84,6 +84,7 @@ typedef struct dungeon {
   uint8_t hardness[DUNGEON_Y][DUNGEON_X];
   char nonTunnel[DUNGEON_Y][DUNGEON_X];
   char tunnel[DUNGEON_Y][DUNGEON_X];
+  pair_t PC; 
 } dungeon_t;
 
 static int32_t corridor_path_cmp(const void *key, const void *with) {
