@@ -33,7 +33,8 @@ void dijkstra_nontunneling(dungeon_t *d){
     			v->position[dim_x] = x; 
     			v->hardness = d->hardness[y][x];
     			v->distance = 255;
-          binheap_insert(h, v);
+          d->tunnel[y][x] = 'Z';
+          //binheap_insert(h, v);
         }
         else {
           d->tunnel[y][x] = '0';
