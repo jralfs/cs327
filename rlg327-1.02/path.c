@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "binheap.h"
+#include "rlg327.h"
 
 #define DUNGEON_X              80
 #define DUNGEON_Y              21
@@ -34,7 +35,7 @@ void dijkstra_nontunneling(dungeon_t *d){
 
 	for (y = 0; y < DUNGEON_Y; y++) {
     	for (x = 0; x < DUNGEON_X; x++) {
-    		if(x != &pc[dim_x] && y != &pc[dim_y]){}
+    		if(x != &pc[dim_x] && y != &pc[dim_y]){
     			vertex *v;
     			v->position[dim_y] = y;
     			v->position[dim_x] = x; 
@@ -45,7 +46,4 @@ void dijkstra_nontunneling(dungeon_t *d){
     		}
  		}
 	}
-
-	
-
 }
