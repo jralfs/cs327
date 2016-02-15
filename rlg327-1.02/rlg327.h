@@ -5,6 +5,12 @@
 extern "C" {
 # endif
 
+typedef enum dim {
+  dim_x,
+  dim_y,
+  num_dims
+} dim_t;
+
 typedef int16_t pair_t[num_dims];
 
 typedef enum __attribute__ ((__packed__)) terrain_type {
