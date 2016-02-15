@@ -36,7 +36,7 @@ void dijkstra_nontunneling(dungeon_t *d){
           binheap_insert(h, v);
         }
         else {
-          d->tunel[y][x] = '0';
+          d->tunnel[y][x] = '0';
         }
 
     		//}
