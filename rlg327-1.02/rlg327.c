@@ -10,6 +10,7 @@
 #include <errno.h>
 
 #include "heap.h"
+#include "path.h"
 
 /* Returns true if random float in [0,1] is less than *
  * numerator/denominator.  Uses only integer math.    */
@@ -723,6 +724,16 @@ void usage(char *name)
   exit(-1);
 }
 
+void print_tunnel(dungeon_t *d){
+	int y, x;
+	for (y = 0; y < DUNGEON_Y; y++) {
+    	for (x = 0; x < DUNGEON_X; x++) {
+    		printf("%c", d->tunnel[y][x]);
+    	}
+    	printf("/n");
+    }
+}
+
 int main(int argc, char *argv[])
 {
   dungeon_t d;
@@ -830,12 +841,15 @@ int main(int argc, char *argv[])
   }
 
   render_dungeon(&d);
+  dijkstra_tunneling(d);
+  print_tunnel(d);
 
   if (do_save) {
     write_dungeon(&d);
   }
     
     delete_dungeon(&d);
+
 
   return 0;
 }

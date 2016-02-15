@@ -1,2 +1,2 @@
-void dijkstra_nontunneling(dungeon_t *d);
+void dijkstra_tunneling(dungeon_t *d);
 

@@ -20,7 +20,7 @@ int32_t compare_data(const void *key, const void *with){
 void data_delete(void *v){
 }
 
-void dijkstra_nontunneling(dungeon_t *d){
+void dijkstra_tunneling(dungeon_t *d){
 	int x, y;
   binheap_t *h =  malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
