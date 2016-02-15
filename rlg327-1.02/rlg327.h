@@ -6,3 +6,9 @@ extern "C" {
 # endif
 
 typedef struct dungeon dungeon_t;
+
+# ifdef __cplusplus
+}
+# endif
+
+#endif

@@ -23,20 +23,20 @@ typedef struct vertex {
 	uint32_t distance; 
 }vertex_t;
 
-pair_t findPC(dungeon_t *d){
-	return NULL;
+void findPC(dungeon_t *d){
 }
 
 void dijkstra_nontunneling(dungeon_t *d){
-	binheap_t *h;
-	binheap_init(h, compare_int(const void *key, const void *with), binheap_delete(binheap_t *h));
+	int x, y;
+  binheap_t *h;
+	//binheap_init(h, compare_int(const void *key, const void *with), binheap_delete(binheap_t *h));
 
-	pair_t *pc = findPC(d);
+	findPC(d);
 
 	for (y = 0; y < DUNGEON_Y; y++) {
     	for (x = 0; x < DUNGEON_X; x++) {
     		if(x != &pc[dim_x] && y != &pc[dim_y]){
-    			vertex *v;
+    			vertex_t *v;
     			v->position[dim_y] = y;
     			v->position[dim_x] = x; 
     			v->hardness = d->hardness[y][x];
