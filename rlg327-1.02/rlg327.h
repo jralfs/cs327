@@ -5,8 +5,8 @@
 extern "C" {
 # endif
 
-#define DUNGEON_X              80
-#define DUNGEON_Y              21
+#define DUNGEON_X   80
+#define DUNGEON_Y   21
 
 typedef enum dim {
   dim_x,

@@ -708,7 +708,8 @@ void print_nontunnel(dungeon_t *d){
 }
 
 void set_PC(dungeon_t *d){
-	srand()
+	srand(time(NULL));
+	rand()
 }
 
 int main(int argc, char *argv[])
