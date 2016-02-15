@@ -5,6 +5,8 @@
 extern "C" {
 # endif
 
+typedef int16_t pair_t[num_dims];
+
 typedef enum __attribute__ ((__packed__)) terrain_type {
   ter_debug,
   ter_wall,
