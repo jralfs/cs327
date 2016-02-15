@@ -696,6 +696,21 @@ void print_tunnel(dungeon_t *d){
     }
 }
 
+
+void print_nontunnel(dungeon_t *d){
+	int y, x;
+	for (y = 0; y < DUNGEON_Y; y++) {
+    	for (x = 0; x < DUNGEON_X; x++) {
+    		printf("%c", d->nonTunnel[y][x]);
+    	}
+    	printf("\n");
+    }
+}
+
+void set_PC(dungeon_t *d){
+	srand()
+}
+
 int main(int argc, char *argv[])
 {
   dungeon_t d;
@@ -803,6 +818,7 @@ int main(int argc, char *argv[])
   }
 
   render_dungeon(&d);
+  set_PC(&d);
   dijkstra_tunneling(&d);
   print_tunnel(&d);
 
