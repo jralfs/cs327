@@ -692,7 +692,7 @@ void print_tunnel(dungeon_t *d){
     	for (x = 0; x < DUNGEON_X; x++) {
     		printf("%c", d->tunnel[y][x]);
     	}
-    	printf("/n");
+    	printf("\n");
     }
 }
 
