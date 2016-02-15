@@ -15,10 +15,18 @@ typedef struct vertex {
 void findPC(dungeon_t *d){
 }
 
+int32_t compare_data(const void *key, const void *with){
+  return 0;
+}
+
+int32_t data_delete(void *){
+  return 0;
+}
+
 void dijkstra_nontunneling(dungeon_t *d){
 	int x, y;
   binheap_t *h =  malloc(sizeof(*h));
-	//binheap_init(h, compare_int(const void *key, const void *with), binheap_delete(binheap_t *h));
+	binheap_init(h, compare_data, data_delete);
 
 	findPC(d);
 //  pair_t *pc;
