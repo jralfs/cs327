@@ -32,7 +32,10 @@ void dijkstra_nontunneling(dungeon_t *d){
 	//binheap_init(h, compare_int(const void *key, const void *with), binheap_delete(binheap_t *h));
 
 	findPC(d);
-
+  pair_t *pc;
+  &pc[dim_x] = 5;
+  &pc[dim_y] = 5;
+  
 	for (y = 0; y < DUNGEON_Y; y++) {
     	for (x = 0; x < DUNGEON_X; x++) {
     		if(x != &pc[dim_x] && y != &pc[dim_y]){
