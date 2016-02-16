@@ -95,7 +95,10 @@ void get_neighbors(vertex_t *v,
 
 int calc_dist(vertex_t *v){
   if(v != NULL){
-    if(v->hardness >= 1 && v->hardness <= 84){
+    if(v->hardness = 0){
+      return 1;
+    }
+    else if(v->hardness >= 1 && v->hardness <= 84){
       return 1;
     }
     else if (v->hardness >= 84 && v->hardness <= 170){
