@@ -50,7 +50,7 @@ vertex_t *get_neightbors(vertex_t *v){
 
 binheap_node_t *init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 	int x, y;
-	binheap_node_t *array[DUNGEON_Y][DUNGEON_X];
+	binheap_node_t *array[DUNGEON_Y][DUNGEON_X] = malloc(sizeof(*array));
 	for (y = 0; y < DUNGEON_Y; y++) {
 		for (x = 0; x < DUNGEON_X; x++) {
 			if(x == d->PC[dim_x] && y == d->PC[dim_y]){
