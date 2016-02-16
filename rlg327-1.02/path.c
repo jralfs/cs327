@@ -91,8 +91,6 @@ void get_neighbors(vertex_t *v,
   if(v->position[dim_y] < 19){
     n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
   }
-
-  return n;
 }
 
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h, 	
