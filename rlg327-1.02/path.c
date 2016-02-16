@@ -27,18 +27,18 @@ void dijkstra_tunneling(dungeon_t *d){
 
 	for (y = 0; y < DUNGEON_Y; y++) {
     	for (x = 0; x < DUNGEON_X; x++) {
-    		if(x != d->PC[dim_x] && y != d->PC[dim_x]){
-    			vertex_t *v = malloc(sizeof(*v));
+    		if(x == d->PC[dim_x] && y == d->PC[dim_x]){
+    			d->tunnel[y][x] = '0';
+        	}
+        	else {
+          		vertex_t *v = malloc(sizeof(*v));
     			v->position[dim_y] = y;
     			v->position[dim_x] = x; 
     			v->hardness = d->hardness[y][x];
     			v->distance = 255;
-          d->tunnel[y][x] = 'Z';
-          //binheap_insert(h, v);
-        }
-        else {
-          d->tunnel[y][x] = '0';
-        }
+          		d->tunnel[y][x] = 'Z';
+          		//binheap_insert(h, v);
+        	}
 
     		//}
  		}
