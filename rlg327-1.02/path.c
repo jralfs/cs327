@@ -37,15 +37,6 @@ vertex_t *get_neightbors(vertex_t *v){
 	return NULL;
 }
 
-void print_heap(binheap_t *h){
-	int i = 0;
-	for (i = 0; i < h->size; i++){
-		binheap_node_t *n = h->array[i];
-		vertex_t *v = n->datum;
-		printf("X: %d, Y %d\n", v->position[dim_x], v->position[dim_y]);
-	}
-}
-
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 	int x, y;
 	for (y = 0; y < DUNGEON_Y; y++) {

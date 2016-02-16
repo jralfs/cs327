@@ -7,12 +7,7 @@ extern "C" {
 
 # include <stdint.h>
 
-//struct binheap_node;
-struct binheap_node {
-  void *datum;
-  uint32_t index;
-};
-
+struct binheap_node;
 typedef struct binheap_node binheap_node_t;
 
 typedef struct binheap {
@@ -23,6 +18,7 @@ typedef struct binheap {
   void (*datum_delete)(void *);
 } binheap_t;
 
+void print_heap(binheap_t *h);
 void binheap_init(binheap_t *h,
                   int32_t (*compare)(const void *key, const void *with),
                   void (*datum_delete)(void *));

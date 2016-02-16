@@ -5,10 +5,19 @@
 
 #define BINHEAP_START_SIZE 128
 
-/*struct binheap_node {
+struct binheap_node {
   void *datum;
   uint32_t index;
-};*/
+};
+
+void print_heap(binheap_t *h){
+  int i = 0;
+  for (i = 0; i < h->size; i++){
+    binheap_node_t *n = h->array[i];
+    vertex_t *v = n->datum;
+    printf("X: %d, Y %d\n", v->position[dim_x], v->position[dim_y]);
+  }
+}
 
 static void percolate_up(binheap_t *h, uint32_t index)
 {
