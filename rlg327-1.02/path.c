@@ -14,8 +14,8 @@ typedef struct vertex {
 
 
 int32_t compare_data(const void *key, const void *with){
-  	vertex vKey = &key;
-  	vertex wKey = &with;
+  	vertex_t vKey = &key;
+  	vertex_t wKey = &with;
   	return vKey.distance - wKey.distance;
  }
 
