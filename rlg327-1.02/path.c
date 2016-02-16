@@ -50,15 +50,19 @@ vertex_t *get_neightbors(vertex_t *v){
 
 binheap_node_t *init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 	int x, y;
-	binheap_node_t *array[DUNGEON_Y][DUNGEON_X] = malloc(sizeof(*array));
+	binheap_node_t *arr[DUNGEON_Y];
+	for (y = 0; y < DUNGEON_Y; y++){
+		arr[y] = (binheap_node_t*)malloc(DUNGEON_X * sizeof(binheap_node_t));
+	}
+
 	for (y = 0; y < DUNGEON_Y; y++) {
 		for (x = 0; x < DUNGEON_X; x++) {
 			if(x == d->PC[dim_x] && y == d->PC[dim_y]){
-				array[y][x] = binheap_insert(h, create_vertex(d, x, y, 0));
+				arr[y][x] = binheap_insert(h, create_vertex(d, x, y, 0));
 				d->tunnel[y][x] = '0';
     		}
     		else if(d->map[y][x] != ter_wall_immutable) {
-      			array[y][x] = binheap_insert(h, create_vertex(d, x, y, 255));
+      			arr[y][x] = binheap_insert(h, create_vertex(d, x, y, 255));
     			d->tunnel[y][x] = 'Z';
     		}
     		else {
