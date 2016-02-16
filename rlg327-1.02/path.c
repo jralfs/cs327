@@ -137,18 +137,18 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h,
 }
 
 void dijkstra_tunneling(dungeon_t *d){
-  //int i = 0;
+  int i = 0;
  	binheap_t *h = malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
 	init_dijkstra_tunnel(d, h, arr);
 
-	/*while(!binheap_is_empty(h)){
+	while(!binheap_is_empty(h)){
     neighbors n;
 		vertex_t *u = binheap_remove_min(h);
 		get_neighbors(u, arr, n);
 
-    for (i = 0; i < num_dir; i++){
+    /*for (i = 0; i < num_dir; i++){
       if(n[i] != NULL){
         vertex_t *v = (vertex_t *)n[i]->datum;
         int alt = u->distance + calc_dist(v);
@@ -157,8 +157,8 @@ void dijkstra_tunneling(dungeon_t *d){
           v->distance = alt;
         }
       }
-    }
+    }*/
 
-	}*/
+	}
 	binheap_delete(h);
 }
