@@ -56,10 +56,43 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 	return v;
 }
 
-vertex_t *get_neightbors(vertex_t *v){
+vertex_t *get_neightbors(vertex_t *v,   
+    binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
   neighbors n;
+  //Right 
+  if(v->position[dim_x] > 0 && v->position[dim_x] < 79){
+    n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
+    //Bot Right
+    if(v->position[dim_y] < 19){
+      n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
+    }
+    //Top Right
+    if(v->position[dim_y] > 1){
+      n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] + 1];
+    }
+  }
+  //Left
+  if(v->position[dim_x] > 1 && v->position[dim_x < 80]){
+    n[left] = arr[v->position[dim_y]][v->position[dim_x]-1];
+    //Bot Left
+    if(v->position[dim_y] < 19){
+      n[bot_left] = arr[v->position[dim_y] + 1][v->position[dim_x] - 1];
+    }
+    //Top Left
+    if(v->position[dim_y] > 1){
+      n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] - 1];
+    }
+  }
+  //Top
+  if(v->position[dim_y] > 1){
+    n[top] = arr[v->position[dim_y] - 1][v->position[dim_x]];
+  }
+  //Bottom
+  if(v->position[dim_y] < 19){
+    n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
+  }
 
-	return NULL;
+  return n;
 }
 
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h, 	
@@ -90,7 +123,7 @@ void dijkstra_tunneling(dungeon_t *d){
 
 	while(!binheap_is_empty(h)){
 		vertex_t *v = binheap_remove_min(h);
-		get_neightbors(v);
+		get_neightbors(v, arr);
 
 	}
 	binheap_delete(h);
