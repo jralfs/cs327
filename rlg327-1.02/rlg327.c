@@ -8,6 +8,7 @@
 #include <limits.h>
 #include <sys/time.h>
 #include <errno.h>
+#include <time.h>
 
 #include "heap.h"
 #include "path.h"
