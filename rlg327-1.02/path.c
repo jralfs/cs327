@@ -51,7 +51,7 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 	int x, y;
 	for (y = 0; y < DUNGEON_Y; y++) {
 		for (x = 0; x < DUNGEON_X; x++) {
-			if(x == d->PC[dim_x] && y == d->PC[dim_x]){
+			if(x == d->PC[dim_x] && y == d->PC[dim_y]){
 				binheap_insert(h, create_vertex(d, x, y, 0));
 				d->tunnel[y][x] = '0';
     		}
