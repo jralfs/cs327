@@ -48,10 +48,8 @@ vertex_t *get_neightbors(vertex_t *v){
 	return NULL;
 }
 
-binheap_node_t *init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
+void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h, 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
 	int x, y;
-	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
-
 	for (y = 0; y < DUNGEON_Y; y++) {
 		for (x = 0; x < DUNGEON_X; x++) {
 			if(x == d->PC[dim_x] && y == d->PC[dim_y]){
@@ -67,14 +65,13 @@ binheap_node_t *init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
     		}
 		}
 	}
-
-	return arr;
 }
 
 void dijkstra_tunneling(dungeon_t *d){
- 	binheap_t *h =  malloc(sizeof(*h));
+ 	binheap_t *h =  malloc(sizeof(*h);
 	binheap_init(h, compare_data, data_delete);
-	init_dijkstra_tunnel(d, h);
+	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
+	init_dijkstra_tunnel(d, h, arr);
 
 	while(!binheap_is_empty(h)){
 		vertex_t *v = binheap_remove_min(h);
