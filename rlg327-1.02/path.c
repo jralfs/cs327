@@ -53,7 +53,7 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 		for (x = 0; x < DUNGEON_X; x++) {
 			if(x == d->PC[dim_x] && y == d->PC[dim_x]){
 				binheap_insert(h, create_vertex(d, x, y, 0));
-				d->tunnel[y][x] = '@';
+				d->tunnel[y][x] = '0';
     		}
     		else if(d->map[y][x] != ter_wall_immutable) {
       			binheap_insert(h, create_vertex(d, x, y, 255));
@@ -70,8 +70,7 @@ void dijkstra_tunneling(dungeon_t *d){
  	binheap_t *h =  malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
 	init_dijkstra_tunnel(d, h);
-	
-	print_binheap(h);
+
 	while(!binheap_is_empty(h)){
 		vertex_t *v = binheap_remove_min(h);
 		get_neightbors(v);
