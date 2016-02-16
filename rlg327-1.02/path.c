@@ -71,6 +71,7 @@ void dijkstra_tunneling(dungeon_t *d){
 	binheap_init(h, compare_data, data_delete);
 	init_dijkstra_tunnel(d, h);
 	
+	print_binheap(h);
 	while(!binheap_is_empty(h)){
 		vertex_t *v = binheap_remove_min(h);
 		get_neightbors(v);
