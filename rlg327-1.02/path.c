@@ -20,6 +20,17 @@ int32_t compare_data(const void *key, const void *with){
  }
 
 void data_delete(void *v){
+	free(v);
+}
+
+vertex_t *create_vertex(dungeon_t *d){
+	vertex_t *v = malloc(sizeof(*v));
+	v->position[dim_y] = y;
+	v->position[dim_x] = x; 
+	v->hardness = d->hardness[y][x];
+	v->distance = 255;
+	d->tunnel[y][x] = 'Z';
+	return v;
 }
 
 void dijkstra_tunneling(dungeon_t *d){
@@ -33,18 +44,10 @@ void dijkstra_tunneling(dungeon_t *d){
     			d->tunnel[y][x] = '@';
         	}
         	else {
-          		vertex_t *v = malloc(sizeof(*v));
-    			v->position[dim_y] = y;
-    			v->position[dim_x] = x; 
-    			v->hardness = d->hardness[y][x];
-    			v->distance = 255;
-          		d->tunnel[y][x] = 'Z';
-          		binheap_insert(h, v);
+          		binheap_insert(h, create_vertex(d));
         	}
-
-    		//}
  		}
 	}
-
-  free(h);
+	
+  binheap_delete(h);
 }
