@@ -33,7 +33,18 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 }
 
 vertex_t *get_neightbors(vertex_t *v){
-	return NULL;
+	vertex_t *array[8];
+
+
+}
+
+void print_heap(binheap_t *h){
+	int i = 0;
+	for (i = 0; i < binheap_t->size; i++){
+		binheap_node_t *n = binheap_t->array[i];
+		vertex_t *v = n->datum;
+		printf("X: %d, Y %d\n", v->position[dim_x], v->position[dim_y]);
+	}
 }
 
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
@@ -44,9 +55,12 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 				binheap_insert(h, create_vertex(d, x, y, 0));
 				d->tunnel[y][x] = '@';
     		}
-    		else {
+    		else if(d->map[y][x] != ter_wall_immutable) {
       			binheap_insert(h, create_vertex(d, x, y, 255));
     			d->tunnel[y][x] = 'Z';
+    		}
+    		else {
+    			d->tunnel[y][x] = ' ';
     		}
 		}
 	}
