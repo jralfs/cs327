@@ -148,16 +148,16 @@ void dijkstra_tunneling(dungeon_t *d){
 		vertex_t *u = binheap_remove_min(h);
 		get_neighbors(u, arr, n);
 
-    /*for (i = 0; i < num_dir; i++){
+    for (i = 0; i < num_dir; i++){
       if(n[i] != NULL){
         vertex_t *v = (vertex_t *)n[i]->datum;
-        int alt = u->distance + calc_dist(v);
+        /*int alt = u->distance + calc_dist(v);
 
         if (alt < v->distance){
           v->distance = alt;
-        }
+        }*/
       }
-    }*/
+    }
 
 	}
 	binheap_delete(h);
