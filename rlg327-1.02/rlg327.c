@@ -718,8 +718,8 @@ void set_PC(dungeon_t *d){
 	int roomNumber = rand()% d->num_rooms;
   room_t r = d->rooms[roomNumber];
   printf("Room #%d\n", roomNumber);
-  printf("Room x:%d\n", r.poition[dim_x]);
-  printf("Room y:%d\n", r.poition[dim_y]);
+  printf("Room x:%d\n", r.position[dim_x]);
+  printf("Room y:%d\n", r.position[dim_y]);
   int x = (rand()%r.position[dim_x]) + r.size[dim_x];
   int y = (rand()%r.position[dim_y]) + r.size[dim_y];
   d->PC[dim_x] = x;
