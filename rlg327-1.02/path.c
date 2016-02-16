@@ -23,7 +23,7 @@ void data_delete(void *v){
 	free(v);
 }
 
-vertex_t *create_vertex(dungeon_t *d){
+vertex_t *create_vertex(dungeon_t *d, int x, int y){
 	vertex_t *v = malloc(sizeof(*v));
 	v->position[dim_y] = y;
 	v->position[dim_x] = x; 
@@ -44,10 +44,10 @@ void dijkstra_tunneling(dungeon_t *d){
     			d->tunnel[y][x] = '@';
         	}
         	else {
-          		binheap_insert(h, create_vertex(d));
+          		binheap_insert(h, create_vertex(d, x, y));
         	}
  		}
 	}
-	
+
   binheap_delete(h);
 }
