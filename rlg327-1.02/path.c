@@ -58,12 +58,12 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 
 void get_neighbors(vertex_t *v,   
     binheap_node_t* arr[DUNGEON_Y][DUNGEON_X], 
-      neighbors n){
+      neighbors *n){
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
     n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
     //Bot Right
-    if(v->position[dim_y] < 18){
+    if(v->position[dim_y] < 19){
       n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
     }
     //Top Right
@@ -75,7 +75,7 @@ void get_neighbors(vertex_t *v,
   if(v->position[dim_x] > 1 && v->position[dim_x < 79]){
     n[left] = arr[v->position[dim_y]][v->position[dim_x]-1];
     //Bot Left
-    if(v->position[dim_y] < 18){
+    if(v->position[dim_y] < 19){
       n[bot_left] = arr[v->position[dim_y] + 1][v->position[dim_x] - 1];
     }
     //Top Left
@@ -88,7 +88,7 @@ void get_neighbors(vertex_t *v,
     n[top] = arr[v->position[dim_y] - 1][v->position[dim_x]];
   }
   //Bottom
-  if(v->position[dim_y] < 18){
+  if(v->position[dim_y] < 19){
     n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
   }
 }
@@ -147,7 +147,7 @@ void dijkstra_tunneling(dungeon_t *d){
 	init_dijkstra_tunnel(d, h, arr);
 
 	while(!binheap_is_empty(h)){
-    neighbors n;
+    neighbors *n;
 		vertex_t *u = binheap_remove_min(h);
 		get_neighbors(u, arr, n);
 
