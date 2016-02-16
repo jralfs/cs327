@@ -7,7 +7,12 @@ extern "C" {
 
 # include <stdint.h>
 
-struct binheap_node;
+//struct binheap_node;
+struct binheap_node {
+  void *datum;
+  uint32_t index;
+};
+
 typedef struct binheap_node binheap_node_t;
 
 typedef struct binheap {

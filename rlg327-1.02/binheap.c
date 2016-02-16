@@ -5,10 +5,10 @@
 
 #define BINHEAP_START_SIZE 128
 
-struct binheap_node {
+/*struct binheap_node {
   void *datum;
   uint32_t index;
-};
+};*/
 
 static void percolate_up(binheap_t *h, uint32_t index)
 {
