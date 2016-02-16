@@ -25,7 +25,7 @@ typedef enum dir {
   num_dir
 } dir_t;
 
-typedef vertex_t* neighbors[num_dir];
+typedef binheap_node_t* neighbors[num_dir];
 
 void print_binheap(binheap_t *h){
   int i = 0;
