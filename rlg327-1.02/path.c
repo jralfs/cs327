@@ -23,31 +23,39 @@ void data_delete(void *v){
 	free(v);
 }
 
-vertex_t *create_vertex(dungeon_t *d, int x, int y){
+vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 	vertex_t *v = malloc(sizeof(*v));
 	v->position[dim_y] = y;
 	v->position[dim_x] = x; 
 	v->hardness = d->hardness[y][x];
-	v->distance = 255;
-	d->tunnel[y][x] = 'Z';
+	v->distance = distance;
 	return v;
 }
 
-void dijkstra_tunneling(dungeon_t *d){
+void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 	int x, y;
+	for (y = 0; y < DUNGEON_Y; y++) {
+		for (x = 0; x < DUNGEON_X; x++) {
+			if(x == d->PC[dim_x] && y == d->PC[dim_x]){
+				binheap_insert(h, create_vertex(d, x, y, 0));
+				d->tunnel[y][x] = '@';
+    		}
+    		else {
+      			binheap_insert(h, create_vertex(d, x, y, 255));
+    			d->tunnel[y][x] = 'Z';
+    		}
+		}
+	}
+}
+
+void dijkstra_tunneling(dungeon_t *d){
  	binheap_t *h =  malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
-
-	for (y = 0; y < DUNGEON_Y; y++) {
-    	for (x = 0; x < DUNGEON_X; x++) {
-    		if(x == d->PC[dim_x] && y == d->PC[dim_x]){
-    			d->tunnel[y][x] = '@';
-        	}
-        	else {
-          		binheap_insert(h, create_vertex(d, x, y));
-        	}
- 		}
+	init_dijkstra_tunnel(d, h);
+	
+	while(!binheap_is_empty(h)){
+		vertex_t *v = binheap_remove_min(h);
 	}
 
-  binheap_delete(h);
+	binheap_delete(h);
 }
