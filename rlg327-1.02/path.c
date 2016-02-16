@@ -13,6 +13,17 @@ typedef struct vertex {
 	uint32_t distance; 
 }vertex_t;
 
+typedef enum dir {
+	right,
+	bot_right,
+	bot,
+	bot_left,
+	left,
+	top_left,
+	top,
+	top_right,
+} dir_t;
+
 void print_binheap(binheap_t *h){
   int i = 0;
   for (i = 0; i < h->size; i++){
@@ -43,7 +54,7 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 }
 
 vertex_t *get_neightbors(vertex_t *v){
-	//vertex_t array[8];
+	vertex_t array[dir_t];
 
 	return NULL;
 }
