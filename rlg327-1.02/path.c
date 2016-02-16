@@ -105,7 +105,7 @@ int calc_dist(vertex_t *v){
       return 3;
     }
     else{
-      printf("hardness is 255, don't put in queue\n");
+      printf("hardness is: %d, don't put in queue\n", v->hardness);
       printf("x: %d, y: %d\n", v->position[dim_x], v->position[dim_y]);
       return 0;
     }
