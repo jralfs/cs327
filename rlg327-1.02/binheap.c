@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #include "binheap.h"
+#include "path.h"
 
 #define BINHEAP_START_SIZE 128
 
