@@ -93,20 +93,20 @@ void get_neighbors(vertex_t *v,
   }
 }
 
-int calc_dist(binheap_node_t *b){
-  if(b != NULL){
-    if(b->datum->hardness >= 1 && b->datum->hardness <= 84){
+int calc_dist(vertex_t *v){
+  if(v != NULL){
+    if(v->hardness >= 1 && v->hardness <= 84){
       return 1;
     }
-    else if (b->datum->hardness >= 84 && b->datum->hardness <= 170){
+    else if (v->hardness >= 84 && v->hardness <= 170){
       return 2;
     }    
-    else if (b->datum->hardness >= 171 && b->datum->hardness <= 254){
+    else if (v->hardness >= 171 && v->hardness <= 254){
       return 3;
     }
     else{
       printf("hardness is 255, don't put in queue\n");
-      printf("x: %d, y: %d\n", b->datum->position[dim_x], b->datum->position[dim_y]);
+      printf("x: %d, y: %d\n", v->position[dim_x], v->position[dim_y]);
     }
   }
   else {
@@ -148,9 +148,10 @@ void dijkstra_tunneling(dungeon_t *d){
 
     for (i = 0; i < num_dir; i++){
       if(n[i] != NULL){
-        int alt = u->distance + calc_dist(n[i]);
-        if (alt < n[i]->distance){
-          n[i]->datum->distance = alt;
+        vertex_t *v = (vertex_t *)n[i]->datum;
+        int alt = u->distance + calc_dist(v);
+        if (alt < v->distance){
+          v->distance = alt;
         }
       }
     }
