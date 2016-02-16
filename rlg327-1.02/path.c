@@ -13,7 +13,7 @@ typedef struct vertex {
 	uint32_t distance; 
 }vertex_t;
 
-void print_heap(binheap_t *h){
+void print_binheap(binheap_t *h){
   int i = 0;
   for (i = 0; i < h->size; i++){
     binheap_node_t *n = h->array[i];
