@@ -68,7 +68,7 @@ binheap_node_t *init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 		}
 	}
 
-	return array;
+	return arr;
 }
 
 void dijkstra_tunneling(dungeon_t *d){
