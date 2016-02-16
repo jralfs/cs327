@@ -43,12 +43,12 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 }
 
 vertex_t *get_neightbors(vertex_t *v){
-	vertex_t array[8];
+	//vertex_t array[8];
 
 	return NULL;
 }
 
-void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
+binheap_node_t *init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 	int x, y;
 	binheap_node_t *array[DUNGEON_Y][DUNGEON_X];
 	for (y = 0; y < DUNGEON_Y; y++) {
@@ -66,6 +66,8 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
     		}
 		}
 	}
+
+	return array;
 }
 
 void dijkstra_tunneling(dungeon_t *d){
