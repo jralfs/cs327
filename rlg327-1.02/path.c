@@ -24,6 +24,8 @@ typedef enum dir {
 	top_right,
 } dir_t;
 
+typedef vertex_t* neighbors[dir_t];
+
 void print_binheap(binheap_t *h){
   int i = 0;
   for (i = 0; i < h->size; i++){
@@ -54,8 +56,7 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 }
 
 vertex_t *get_neightbors(vertex_t *v){
-	vertex_t* neigh[dir_t];
-
+  neightbors n;
 
 	return NULL;
 }
