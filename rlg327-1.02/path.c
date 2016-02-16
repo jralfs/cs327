@@ -49,7 +49,7 @@ vertex_t *get_neightbors(vertex_t *v){
 }
 
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h, 	
-		binheap_node_t* arr[][DUNGEON_X]){
+		binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
 	int x, y;
 	for (y = 0; y < DUNGEON_Y; y++) {
 		for (x = 0; x < DUNGEON_X; x++) {
@@ -69,7 +69,7 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h,
 }
 
 void dijkstra_tunneling(dungeon_t *d){
- 	binheap_t *h = malloc(sizeof(*h);
+ 	binheap_t *h = malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
 	init_dijkstra_tunnel(d, h, arr);
@@ -79,6 +79,5 @@ void dijkstra_tunneling(dungeon_t *d){
 		get_neightbors(v);
 
 	}
-
 	binheap_delete(h);
 }
