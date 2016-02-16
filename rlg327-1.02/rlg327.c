@@ -313,7 +313,12 @@ void render_dungeon(dungeon_t *d)
         break;
       case ter_floor:
       case ter_floor_room:
-        putchar('.');
+        if(p[dim_y] == d->PC[dim_y] && p[dim_x] == d->PC[dim_x]){
+          putchar('@');
+        }
+        else {
+          putchar('.');
+        }
         break;
       case ter_floor_hall:
         putchar('#');
@@ -712,6 +717,9 @@ void set_PC(dungeon_t *d){
 	srand(time(NULL));
 	int roomNumber = rand()% d->num_rooms;
   room_t r = d->rooms[roomNumber];
+  printf("Room #%d\n", roomNumber);
+  printf("Room x:%d\n", r.poition[dim_x]);
+  printf("Room y:%d\n", r.poition[dim_y]);
   int x = (rand()%r.position[dim_x]) + r.size[dim_x];
   int y = (rand()%r.position[dim_y]) + r.size[dim_y];
   d->PC[dim_x] = x;
@@ -825,9 +833,9 @@ int main(int argc, char *argv[])
   } else {
     gen_dungeon(&d);
   }
-
-  render_dungeon(&d);
+  
   set_PC(&d);
+  render_dungeon(&d);
   dijkstra_tunneling(&d);
   print_tunnel(&d);
 
