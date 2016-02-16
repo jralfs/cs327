@@ -119,8 +119,8 @@ int calc_dist(vertex_t *v){
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h, 	
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
 	int x, y;
-	for (y = 1; y < DUNGEON_Y; y++) {
-		for (x = 1; x < DUNGEON_X; x++) {
+	for (y = 0; y < DUNGEON_Y; y++) {
+		for (x = 0; x < DUNGEON_X; x++) {
 			if(x == d->PC[dim_x] && y == d->PC[dim_y]){
 				arr[y][x] = binheap_insert(h, create_vertex(d, x, y, 0));
 				d->tunnel[y][x] = '0';
