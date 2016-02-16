@@ -32,6 +32,10 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 	return v;
 }
 
+vertex_t *get_neightbors(vertex_t *v){
+	return NULL;
+}
+
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 	int x, y;
 	for (y = 0; y < DUNGEON_Y; y++) {
@@ -55,6 +59,8 @@ void dijkstra_tunneling(dungeon_t *d){
 	
 	while(!binheap_is_empty(h)){
 		vertex_t *v = binheap_remove_min(h);
+		get_neightbors(v);
+
 	}
 
 	binheap_delete(h);
