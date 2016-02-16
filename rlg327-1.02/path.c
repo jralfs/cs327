@@ -22,7 +22,7 @@ void data_delete(void *v){
 
 void dijkstra_tunneling(dungeon_t *d){
 	int x, y;
-  binheap_t *h =  malloc(sizeof(*h));
+ 	binheap_t *h =  malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
 
 	for (y = 0; y < DUNGEON_Y; y++) {

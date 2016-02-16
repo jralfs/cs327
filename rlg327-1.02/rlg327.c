@@ -709,7 +709,12 @@ void print_nontunnel(dungeon_t *d){
 
 void set_PC(dungeon_t *d){
 	srand(time(NULL));
-	rand()
+	int roomNumber = rand()% d->num_rooms;
+  room_t r = d->rooms[roomNumber];
+  int x = (rand()%r.position[dim_x]) + r.size[dim_x];
+  int y = (rand()%r.position[dim_y]) + r.size[dim_y];
+  d->PC[dim_x] = x;
+  d->PC[dim_y] = y;
 }
 
 int main(int argc, char *argv[])
