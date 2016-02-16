@@ -14,8 +14,8 @@ typedef struct vertex {
 
 
 int32_t compare_data(const void *key, const void *with){
-  return 0;
-}
+  	return *(const int32_t *)key->distance - *(const int32_t *)with->distance;
+ }
 
 void data_delete(void *v){
 }
@@ -28,7 +28,7 @@ void dijkstra_tunneling(dungeon_t *d){
 	for (y = 0; y < DUNGEON_Y; y++) {
     	for (x = 0; x < DUNGEON_X; x++) {
     		if(x == d->PC[dim_x] && y == d->PC[dim_x]){
-    			d->tunnel[y][x] = '0';
+    			d->tunnel[y][x] = '@';
         	}
         	else {
           		vertex_t *v = malloc(sizeof(*v));
@@ -37,7 +37,7 @@ void dijkstra_tunneling(dungeon_t *d){
     			v->hardness = d->hardness[y][x];
     			v->distance = 255;
           		d->tunnel[y][x] = 'Z';
-          		//binheap_insert(h, v);
+          		binheap_insert(h, v);
         	}
 
     		//}
