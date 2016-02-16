@@ -60,10 +60,10 @@ void get_neighbors(vertex_t *v,
     binheap_node_t* arr[DUNGEON_Y][DUNGEON_X], 
       neighbors n){
   //Right 
-  if(v->position[dim_x] > 0 && v->position[dim_x] < 79){
+  if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
     n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
     //Bot Right
-    if(v->position[dim_y] < 19){
+    if(v->position[dim_y] < 18){
       n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
     }
     //Top Right
@@ -72,10 +72,10 @@ void get_neighbors(vertex_t *v,
     }
   }
   //Left
-  if(v->position[dim_x] > 1 && v->position[dim_x < 80]){
+  if(v->position[dim_x] > 1 && v->position[dim_x < 79]){
     n[left] = arr[v->position[dim_y]][v->position[dim_x]-1];
     //Bot Left
-    if(v->position[dim_y] < 19){
+    if(v->position[dim_y] < 18){
       n[bot_left] = arr[v->position[dim_y] + 1][v->position[dim_x] - 1];
     }
     //Top Left
@@ -88,7 +88,7 @@ void get_neighbors(vertex_t *v,
     n[top] = arr[v->position[dim_y] - 1][v->position[dim_x]];
   }
   //Bottom
-  if(v->position[dim_y] < 19){
+  if(v->position[dim_y] < 18){
     n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
   }
 }
@@ -119,8 +119,8 @@ int calc_dist(vertex_t *v){
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h, 	
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
 	int x, y;
-	for (y = 0; y < DUNGEON_Y; y++) {
-		for (x = 0; x < DUNGEON_X; x++) {
+	for (y = 1; y < DUNGEON_Y; y++) {
+		for (x = 1; x < DUNGEON_X; x++) {
 			if(x == d->PC[dim_x] && y == d->PC[dim_y]){
 				arr[y][x] = binheap_insert(h, create_vertex(d, x, y, 0));
 				d->tunnel[y][x] = '0';
