@@ -93,8 +93,29 @@ void get_neighbors(vertex_t *v,
   }
 }
 
+int calc_dist(binheap_node_t *b){
+  if(b != NULL){
+    if(b->datum->hardness >= 1 && b->datum->hardness <= 84){
+      return 1;
+    }
+    else if (b->datum->hardness >= 84 && b->datum->hardness <= 170){
+      return 2;
+    }    
+    else if (b->datum->hardness >= 171 && b->datum->hardness <= 254){
+      return 3;
+    }
+    else{
+      printf("hardness is 255, don't put in queue\n");
+      printf("x: %d, y: %d\n", b->datum->position[dim_x], b->datum->position[dim_y]);
+    }
+  }
+  else {
+    printf("Node was null\n");
+  }
+}
+
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h, 	
-		binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
+	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
 	int x, y;
 	for (y = 0; y < DUNGEON_Y; y++) {
 		for (x = 0; x < DUNGEON_X; x++) {
@@ -103,7 +124,7 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h,
 				d->tunnel[y][x] = '0';
     		}
     		else if(d->map[y][x] != ter_wall_immutable) {
-      			arr[y][x] = binheap_insert(h, create_vertex(d, x, y, 255));
+      		arr[y][x] = binheap_insert(h, create_vertex(d, x, y, 255));
     			d->tunnel[y][x] = 'Z';
     		}
     		else {
@@ -114,6 +135,7 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h,
 }
 
 void dijkstra_tunneling(dungeon_t *d){
+  int i = 0;
  	binheap_t *h = malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
@@ -121,8 +143,17 @@ void dijkstra_tunneling(dungeon_t *d){
 
 	while(!binheap_is_empty(h)){
     neighbors n;
-		vertex_t *v = binheap_remove_min(h);
-		get_neighbors(v, arr, n);
+		vertex_t *u = binheap_remove_min(h);
+		get_neighbors(u, arr, n);
+
+    for (i = 0; i < num_dir; i++){
+      if(n[i] != NULL){
+        int alt = u->distance + calc_dist(n[i]);
+        if (alt < n[i]->distance){
+          n[i]->datum->distance = alt;
+        }
+      }
+    }
 
 	}
 	binheap_delete(h);
