@@ -125,7 +125,7 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h,
 				arr[y][x] = binheap_insert(h, create_vertex(d, x, y, 0));
 				d->tunnel[y][x] = '0';
     		}
-    		else if(d->map[y][x] != ter_wall_immutable) {
+    		else if(d->hardness != 255) {
       		arr[y][x] = binheap_insert(h, create_vertex(d, x, y, 255));
     			d->tunnel[y][x] = 'Z';
     		}
