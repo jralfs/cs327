@@ -54,7 +54,8 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 }
 
 vertex_t *get_neightbors(vertex_t *v){
-	vertex_t array[dir_t];
+	vertex_t* neigh[dir_t];
+
 
 	return NULL;
 }
