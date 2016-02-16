@@ -33,15 +33,14 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 }
 
 vertex_t *get_neightbors(vertex_t *v){
-	vertex_t *array[8];
-
-
+	//vertex_t *array[8];
+	return NULL;
 }
 
 void print_heap(binheap_t *h){
 	int i = 0;
-	for (i = 0; i < binheap_t->size; i++){
-		binheap_node_t *n = binheap_t->array[i];
+	for (i = 0; i < h->size; i++){
+		binheap_node_t *n = h->array[i];
 		vertex_t *v = n->datum;
 		printf("X: %d, Y %d\n", v->position[dim_x], v->position[dim_y]);
 	}
