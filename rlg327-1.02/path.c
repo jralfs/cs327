@@ -50,10 +50,7 @@ vertex_t *get_neightbors(vertex_t *v){
 
 binheap_node_t *init_dijkstra_tunnel(dungeon_t *d, binheap_t *h){
 	int x, y;
-	binheap_node_t *arr[DUNGEON_Y];
-	for (y = 0; y < DUNGEON_Y; y++){
-		arr[y] = (binheap_node_t*)malloc(DUNGEON_X * sizeof(binheap_node_t));
-	}
+	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
 
 	for (y = 0; y < DUNGEON_Y; y++) {
 		for (x = 0; x < DUNGEON_X; x++) {
