@@ -716,6 +716,8 @@ void set_PC(dungeon_t *d){
   int y = (rand()%r.position[dim_y]) + r.size[dim_y];
   d->PC[dim_x] = x;
   d->PC[dim_y] = y;
+  printf("x: %d/n", x);
+  printf("y: %d/n", y);
 }
 
 int main(int argc, char *argv[])
