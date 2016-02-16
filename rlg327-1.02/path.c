@@ -61,35 +61,35 @@ void get_neighbors(vertex_t *v,
       neighbors *n){
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
-    n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
+    &n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
     //Bot Right
     if(v->position[dim_y] < 19){
-      n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
+      &n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
     }
     //Top Right
     if(v->position[dim_y] > 1){
-      n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] + 1];
+      &n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] + 1];
     }
   }
   //Left
   if(v->position[dim_x] > 1 && v->position[dim_x < 79]){
-    n[left] = arr[v->position[dim_y]][v->position[dim_x]-1];
+    &n[left] = arr[v->position[dim_y]][v->position[dim_x]-1];
     //Bot Left
     if(v->position[dim_y] < 19){
-      n[bot_left] = arr[v->position[dim_y] + 1][v->position[dim_x] - 1];
+      &n[bot_left] = arr[v->position[dim_y] + 1][v->position[dim_x] - 1];
     }
     //Top Left
     if(v->position[dim_y] > 1){
-      n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] - 1];
+      &n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] - 1];
     }
   }
   //Top
   if(v->position[dim_y] > 1){
-    n[top] = arr[v->position[dim_y] - 1][v->position[dim_x]];
+    &n[top] = arr[v->position[dim_y] - 1][v->position[dim_x]];
   }
   //Bottom
   if(v->position[dim_y] < 19){
-    n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
+    &n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
   }
 }
 
