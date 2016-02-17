@@ -174,6 +174,8 @@ void dijkstra_nontunneling(dungeon_t *d)
 	      		case ter_floor_hall:
 	       		 	d->nonTunnel[y][x] = '#';
 	        		break;
+	        	case ter_debug:
+	        		break;
 	      		}
 	  		}
 	  		
