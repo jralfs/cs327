@@ -45,7 +45,7 @@ void dijkstra_nontunneling(dungeon_t *d)
   from[dim_y] = d->PC[dim_y];
   
   static vertex_t path[DUNGEON_Y][DUNGEON_X];
-  //static vertex_t *p;
+  static vertex_t *p;
   static uint32_t initialized = 0;
   binheap_t h;
   uint32_t x, y;
@@ -139,7 +139,7 @@ void dijkstra_nontunneling(dungeon_t *d)
 	    w->from[dim_x] = px(p);
 	    w->from[dim_y] = py(p);
 	    w->cost = p->cost + 1;
-	    binheap_decrease_key(&h, w.hn);
+	    binheap_decrease_key(&h, w->hn);
 	  }
 
 	  w = &path[px(p)+1][py(p)+1];
@@ -147,7 +147,7 @@ void dijkstra_nontunneling(dungeon_t *d)
 	    w->from[dim_x] = px(p);
 	    w->from[dim_y] = py(p);
 	    w->cost = p->cost + 1;
-	    binheap_decrease_key(&h, w.hn);
+	    binheap_decrease_key(&h, w->hn);
 	  }
 
   }
