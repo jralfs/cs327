@@ -192,7 +192,7 @@ void dijkstra_tunneling(dungeon_t *d){
 	from[dim_y] = d->PC[dim_y];
 
 	static vertex_t path[DUNGEON_Y][DUNGEON_X];
-	static vertex_t *p;
+//	static vertex_t *p;
 	static uint32_t initialized = 0;
 	binheap_t h;
 	uint32_t x, y;
