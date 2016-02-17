@@ -169,7 +169,7 @@ void dijkstra_tunneling(dungeon_t *d){
 		vertex_t *u = binheap_remove_min(h);
 		get_neighbors(u, arr, &n);
     for(i = 0; i < num_dir; i++){
-      if(n[i] != null){
+      if(n[i] != NULL){
         calc_tentative_dist(u, n[i]);
       }
     }
