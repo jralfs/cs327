@@ -10,6 +10,7 @@
 #define INFINITE 255
 #define px(p) (p->pos[dim_x])
 #define py(p) (p->pos[dim_y])
+#define w  (&path[px(p) - 1][py(p)]);
 
 
 typedef struct vertex {
@@ -85,9 +86,8 @@ void dijkstra_nontunneling(dungeon_t *d)
   while ((p = binheap_remove_min(&h))) {
 	  p->hn = NULL;
 	  printf("X: %d, Y: %d\n", px(p), py(p));
-	  vertex_t *w;
 
-	  w = &path[px(p) - 1][py(p)];
+
 	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
 	    w->from[dim_x] = px(p);
 	    w->from[dim_y] = py(p);
@@ -95,7 +95,7 @@ void dijkstra_nontunneling(dungeon_t *d)
 	    binheap_decrease_key(&h, w->hn);
 	  }
 
-	  w = &path[px(p)][py(p)-1];
+	  /*w = &path[px(p)][py(p)-1];
 	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
 	    w->from[dim_x] = px(p);
 	    w->from[dim_y] = py(p);
@@ -149,7 +149,7 @@ void dijkstra_nontunneling(dungeon_t *d)
 	    w->from[dim_y] = py(p);
 	    w->cost = p->cost + 1;
 	    binheap_decrease_key(&h, w->hn);
-	  }
+	  }*/
 
   }
 
