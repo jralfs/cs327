@@ -1,0 +1,28 @@
+# Change Log
+All notable changes to this project will be documented in this file.
+
+## [0.0.3] - 2016-02-16
+### Removed
+-All previous code from 0.0.2
+### Changed
+-Prints out a map of the dungeon with relative distances to the PC denoted by 0.
+-Prints out a map of only the rooms and corridors with relative distances to the PC denoted by 0.
+## Added
+-Using the professor's solution code to project 1.02
+-Added path.c, path.h, and rlg327.h
+
+
+## [0.0.2] - 2016-02-02
+### Removed
+-All previous code from 0.0.1
+### Changed
+-Saves and loads dungeon files
+### Added 
+-More methods to rlg327.c to get save and load functions
+-Using the professor's solution code to project 1.01
+
+
+## 0.0.1 - 2016-01-26
+### Added
+-dungeon.c to generate random dungeons
+

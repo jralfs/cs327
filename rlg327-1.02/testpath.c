@@ -70,7 +70,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     p->hn = NULL;
 
     vertex_t w = path[px(p) - 1][py(p)];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy[px(p) - 1][py(p)] == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
