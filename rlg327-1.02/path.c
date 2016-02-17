@@ -187,17 +187,17 @@ void dijkstra_nontunneling(dungeon_t *d)
 }
 
 void dijkstra_tunneling(dungeon_t *d){
-pair_t from;
-  from[dim_x] = d->PC[dim_x];
-  from[dim_y] = d->PC[dim_y];
-  
-  static vertex_t path[DUNGEON_Y][DUNGEON_X];
-  static vertex_t *p;
-  static uint32_t initialized = 0;
-  binheap_t h;
-  uint32_t x, y;
+	pair_t from;
+	from[dim_x] = d->PC[dim_x];
+	from[dim_y] = d->PC[dim_y];
 
-  if (!initialized) {
+	static vertex_t path[DUNGEON_Y][DUNGEON_X];
+	static vertex_t *p;
+	static uint32_t initialized = 0;
+	binheap_t h;
+	uint32_t x, y;
+
+	if (!initialized) {
 	  for (y = 0; y < DUNGEON_Y; y++) {
 	    for (x = 0; x < DUNGEON_X; x++) {
 	      path[y][x].pos[dim_y] = y;
@@ -205,31 +205,31 @@ pair_t from;
 	    }
 	  }
 	  initialized = 1;
-  }
+	}
 
-  for (y = 0; y < DUNGEON_Y; y++) {
+	for (y = 0; y < DUNGEON_Y; y++) {
 	  for (x = 0; x < DUNGEON_X; x++) {
 	    path[y][x].cost = INFINITE;
 	  }
-  }
+	}
 
-  path[from[dim_y]][from[dim_x]].cost = 0;
+	path[from[dim_y]][from[dim_x]].cost = 0;
 
-  binheap_init(&h, compare_data, data_delete);
+	binheap_init(&h, compare_data, data_delete);
 
-  for (y = 0; y < DUNGEON_Y; y++) {
-  	for (x = 0; x < DUNGEON_X; x++) {
-    	if (mapxy(y, x) != ter_wall_immutable) {
-      		path[y][x].hn = binheap_insert(&h, &path[y][x]);
-    	} else {
-     		path[y][x].hn = NULL;
-    	}
-  	}
-  }
+	for (y = 0; y < DUNGEON_Y; y++) {
+		for (x = 0; x < DUNGEON_X; x++) {
+		if (mapxy(y, x) != ter_wall_immutable) {
+	  		path[y][x].hn = binheap_insert(&h, &path[y][x]);
+		} else {
+	 		path[y][x].hn = NULL;
+		}
+		}
+	}
 
 
 
-  while ((p = binheap_remove_min(&h))) {
+	while ((p = binheap_remove_min(&h))) {
 	  p->hn = NULL;
 
 		  if((w->hn) && (w->cost > p->cost) && (hardnessxy(py(p), px(p) - 1) == 0)){
@@ -288,15 +288,15 @@ pair_t from;
 		    binheap_decrease_key(&h, c->hn);
 		  }
 
-  }
+	}
 
-  char cost[62]={'0','1','2','3','4','5','6','7','8','9',
-    'a','b','c','d','e','f','g','h','i','j','k','l','m','n',
-    'o','p','q','r','s','t','u','v','w','x','y','z',
-    'A','B','C','D','E','F','G','H','I','J','K','L',
-    'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-	
-  for (y = 0; y < DUNGEON_Y; y++) {
+	char cost[62]={'0','1','2','3','4','5','6','7','8','9',
+	'a','b','c','d','e','f','g','h','i','j','k','l','m','n',
+	'o','p','q','r','s','t','u','v','w','x','y','z',
+	'A','B','C','D','E','F','G','H','I','J','K','L',
+	'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+	for (y = 0; y < DUNGEON_Y; y++) {
 	  	for (x = 0; x < DUNGEON_X; x++) {
 	  		if(path[y][x].cost <= 61){
 	  			d->tunnel[y][x] = cost[path[y][x].cost];

@@ -844,10 +844,12 @@ int main(int argc, char *argv[])
   
   set_PC(&d);
   render_dungeon(&d);
+
   dijkstra_nontunneling(&d);
   print_nontunnel(&d);
+
   dijkstra_tunneling(&d);
-  print_tunnel(&d);
+  //print_tunnel(&d);
 
   if (do_save) {
     write_dungeon(&d);
