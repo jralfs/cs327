@@ -24,7 +24,7 @@ void print_binheap(binheap_t *h){
   for (i = 0; i < h->size; i++){
     binheap_node_t *n = h->array[i];
     vertex_t *v = n->datum;
-    printf("X: %d, Y %d\n", v->position[dim_x], v->position[dim_y]);
+    printf("X: %d, Y %d\n", v->pos[dim_x], v->pos[dim_y]);
   }
 }
 
