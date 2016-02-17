@@ -9,10 +9,6 @@
 
 #define px(p) (p->pos[dim_x])
 #define py(p) (p->pos[dim_y])
-#define mappair(pair) (d->map[pair[dim_y]][pair[dim_x]])
-#define mapxy(x, y) (d->map[y][x])
-#define hardnesspair(pair) (d->hardness[pair[dim_y]][pair[dim_x]])
-#define hardnessxy(x, y) (d->hardness[y][x])
 
 typedef struct vertex {
   binheap_node_t *hn;
