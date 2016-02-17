@@ -92,8 +92,6 @@ void dijkstra_nontunneling(dungeon_t *d)
 
   while ((p = binheap_remove_min(&h))) {
 	  p->hn = NULL;
-	  printf("X: %d, Y: %d\n", px(p), py(p));
-
 
 		  if((w->hn) && (w->cost > p->cost) && (hardnessxy(py(p), px(p) - 1) == 0)){
 		    w->from[dim_x] = px(p);
