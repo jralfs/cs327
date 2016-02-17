@@ -1,4 +1,4 @@
-¥CC = gcc
+﻿¥CC = gcc
 CXX = g++
 ECHO = echo
 RM = rm -f
@@ -8,7 +8,7 @@ CXXFLAGS = -Wall -Werror -ggdb -funroll-loops
 LDFLAGS = 
 
 BIN = rlg327
-OBJS = rlg327.o heap.o
+OBJS = rlg327.o heap.o binheap.o path.o
 
 all: $(BIN) etags
 
