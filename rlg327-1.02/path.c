@@ -229,7 +229,7 @@ void dijkstra_tunneling(dungeon_t *d){
 
 
 
-	while ((p = binheap_remove_min(&h))) {
+	/*while ((p = binheap_remove_min(&h))) {
 		p->hn = NULL;
 
 	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(py(p), px(p) - 1) == 0)){
@@ -320,7 +320,7 @@ void dijkstra_tunneling(dungeon_t *d){
 	  		}
 	  		
 	  	}
-	}
+	}*/
 
 	binheap_delete(&h);
 }
