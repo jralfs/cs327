@@ -162,11 +162,11 @@ void dijkstra_tunneling(dungeon_t *d){
 	binheap_init(h, compare_data, data_delete);
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
 	init_dijkstra_tunnel(d, h, arr);
-  neighbors *n;
+  neighbors n;
 
 	while(!binheap_is_empty(h)){
 		vertex_t *u = binheap_remove_min(h);
-		get_neighbors(u, arr, n);
+		get_neighbors(u, arr, &n);
 
 	}
 	binheap_delete(h);
