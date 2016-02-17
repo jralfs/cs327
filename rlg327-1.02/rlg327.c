@@ -723,8 +723,8 @@ void set_PC(dungeon_t *d){
   d->PC[dim_x] = x;
   d->PC[dim_y] = y;
   
-  //printf("x: %d\n", x);
-  //printf("y: %d\n", y);
+  printf("x: %d\n", x);
+  printf("y: %d\n", y);
 }
 
 int main(int argc, char *argv[])
