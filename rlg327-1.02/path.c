@@ -84,6 +84,7 @@ void dijkstra_nontunneling(dungeon_t *d)
 
   while ((p = binheap_remove_min(&h))) {
 	  p->hn = NULL;
+	  printf("X: %d, Y: %d\n", px(p), py(p));
 	  vertex_t *w;
 
 	  w = &path[px(p) - 1][py(p)];
