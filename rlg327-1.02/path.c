@@ -81,15 +81,8 @@ int calc_dist(vertex_t *v){
   }
 }
 
-void calc_tentative_dist(vertex_t *key, vertex_t *with){
-  int alt = key->distance + calc_dist(with);
-  if (alt < with->distance){
-    with->distance = alt;
-  }
-}
-
 void calc_tentative_dist(vertex_t *key, binheap_node_t *h){
-  vertex *with = (vertex *)h->datum;
+  vertex_t *with = (vertex_t *)h->datum;
   int alt = key->distance + calc_dist(with);
   if (alt < with->distance){
     with->distance = alt;
