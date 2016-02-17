@@ -22,7 +22,7 @@ void data_delete(void *v){
 int32_t compare_data(const void *key, const void *with){
     const vertex_t *vKey = key;
     const vertex_t *wKey = with;
-    return vKey->distance - wKey->distance;
+    return vKey->cost - wKey->cost;
  }
 
 void dijkstra_corridor(dungeon_t *d, pair_t from)
