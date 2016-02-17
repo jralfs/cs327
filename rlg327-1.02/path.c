@@ -96,11 +96,11 @@ void get_neighbors(vertex_t *v,
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
     memcpy(n[right], arr[v->position[dim_y]][v->position[dim_x] + 1], sizeof(*arr[v->position[dim_y]][v->position[dim_x] + 1]));
-    //calc_tentative_dist(v, n[right]);
+    calc_tentative_dist(v, n[right]);
     //Bot Right
     if(v->position[dim_y] < 19){
       memcpy(n[bot_right], arr[v->position[dim_y] + 1][v->position[dim_x] + 1], sizeof(*arr[v->position[dim_y] + 1][v->position[dim_x] + 1]));
-      //calc_tentative_dist(v, n[bot_right]);
+      calc_tentative_dist(v, n[bot_right]);
     }
     //Top Right
     if(v->position[dim_y] > 1){
