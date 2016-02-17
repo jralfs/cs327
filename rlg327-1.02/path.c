@@ -46,8 +46,7 @@ int32_t compare_data(const void *key, const void *with){
     return vKey->cost - wKey->cost;
  }
 
-void dijkstra_nontunneling(dungeon_t *d)
-{
+void dijkstra_nontunneling(dungeon_t *d){
   pair_t from;
   from[dim_x] = d->PC[dim_x];
   from[dim_y] = d->PC[dim_y];

@@ -707,10 +707,6 @@ void print_nontunnel(dungeon_t *d){
   int y, x;
   for (y = 0; y < DUNGEON_Y; y++) {
     for (x = 0; x < DUNGEON_X; x++) {
-    /* if(mapxy(x,y) != ter_wall &&
-        mapxy(x,y) != ter_wall_immutable){
-        printf("%c", d->nonTunnel[y][x]);        
-      }*/
       printf("%c", d->nonTunnel[y][x]);  
     }
     printf("\n");
@@ -848,7 +844,7 @@ int main(int argc, char *argv[])
   dijkstra_nontunneling(&d);
   print_nontunnel(&d);
 
-  dijkstra_tunneling(&d);
+  //dijkstra_tunneling(&d);
   //print_tunnel(&d);
 
   if (do_save) {
