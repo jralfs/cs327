@@ -90,9 +90,9 @@ void calc_tentative_dist(vertex_t *key, binheap_node_t *h){
 }
 
 void get_neighbors(vertex_t *v,   
-    binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
-  neighbors n;
-  n = NULL;
+    binheap_node_t* arr[DUNGEON_Y][DUNGEON_X], 
+      neighbors *n;){
+
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
     n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
@@ -162,10 +162,11 @@ void dijkstra_tunneling(dungeon_t *d){
 	binheap_init(h, compare_data, data_delete);
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
 	init_dijkstra_tunnel(d, h, arr);
+  neighbors *n;
 
 	while(!binheap_is_empty(h)){
 		vertex_t *u = binheap_remove_min(h);
-		get_neighbors(u, arr);
+		get_neighbors(u, arr, n);
 
 	}
 	binheap_delete(h);
