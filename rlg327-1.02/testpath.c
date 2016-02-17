@@ -12,6 +12,7 @@
 
 typedef struct vertex {
   binheap_node_t *hn;
+  uint8_t pos[2];
   uint8_t from[2];
   uint32_t cost; 
 }vertex_t;
@@ -95,7 +96,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
          ((p->pos[dim_x] != from[dim_x]) ? 48  : 0);
       path[p->pos[dim_y] - 1][p->pos[dim_x]    ].from[dim_y] = p->pos[dim_y];
       path[p->pos[dim_y] - 1][p->pos[dim_x]    ].from[dim_x] = p->pos[dim_x];
-      heap_decrease_key_no_replace(&h, path[p->pos[dim_y] - 1]
+      heap_decrease_key(&h, path[p->pos[dim_y] - 1]
                                            [p->pos[dim_x]    ].hn);
     }
     if ((path[p->pos[dim_y]    ][p->pos[dim_x] - 1].hn) &&
