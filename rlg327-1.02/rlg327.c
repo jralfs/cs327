@@ -844,7 +844,7 @@ int main(int argc, char *argv[])
   dijkstra_nontunneling(&d);
   print_nontunnel(&d);
 
-  //dijkstra_tunneling(&d);
+  dijkstra_tunneling(&d);
   //print_tunnel(&d);
 
   if (do_save) {
