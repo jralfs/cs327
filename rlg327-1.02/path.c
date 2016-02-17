@@ -10,14 +10,14 @@
 #define INFINITE 255
 #define px(p) (p->pos[dim_x])
 #define py(p) (p->pos[dim_y])
-#define w  	(&path[px(p) - 1][py(p)])
-#define k  	(&path[px(p)][py(p) - 1])
-#define	l 	(&path[px(p)][py(p) + 1])
-#define m 	(&path[px(p) + 1][py(p)])
-#define r 	(&path[px(p) + 1][py(p)  - 1])
-#define a 	(&path[px(p) - 1][py(p)  - 1])
-#define b 	(&path[px(p) - 1][py(p)  + 1])
-#define c 	(&path[px(p) + 1][py(p)  + 1])
+#define w  	(&path 	[py(p)]		[px(p) - 1]			)
+#define k  	(&path 	[py(p) - 1] [px(p)]				)
+#define	l 	(&path	[py(p) + 1]	[px(p)]				)
+#define m 	(&path	[py(p)]		[px(p) + 1]			)
+#define r 	(&path	[py(p)  - 1][px(p) + 1]			)	
+#define a 	(&path	[py(p)  - 1][px(p) - 1]			)
+#define b 	(&path	[py(p)  + 1][px(p) - 1]			)
+#define c 	(&path	[py(p)  + 1][px(p) + 1]			)
 
 
 typedef struct vertex {
@@ -80,7 +80,7 @@ void dijkstra_nontunneling(dungeon_t *d)
 
   for (y = 0; y < DUNGEON_Y; y++) {
   	for (x = 0; x < DUNGEON_X; x++) {
-    	if (mapxy(x, y) != ter_wall_immutable) {
+    	if (mapxy(y, x) != ter_wall_immutable) {
       		path[y][x].hn = binheap_insert(&h, &path[y][x]);
     	} else {
      		path[y][x].hn = NULL;
@@ -95,61 +95,61 @@ void dijkstra_nontunneling(dungeon_t *d)
 	  printf("X: %d, Y: %d\n", px(p), py(p));
 
 
-	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w->from[dim_x] = px(p);
-	    w->from[dim_y] = py(p);
-	    w->cost = p->cost + 1;
-	    binheap_decrease_key(&h, w->hn);
-	  }
+		  if((w->hn) && (w->cost > p->cost) && (hardnessxy(py(p), px(p) - 1) == 0)){
+		    w->from[dim_x] = px(p);
+		    w->from[dim_y] = py(p);
+		    w->cost = p->cost + 1;
+		    binheap_decrease_key(&h, w->hn);
+		  }
 
-	  if((k->hn) && (k->cost > p->cost) && (hardnessxy(px(p), py(p) - 1) == 0)){
-	    k->from[dim_x] = px(p);
-	    k->from[dim_y] = py(p);
-	    k->cost = p->cost + 1;
-	    binheap_decrease_key(&h, k->hn);
-	  }
+		  if((k->hn) && (k->cost > p->cost) && (hardnessxy(py(p) - 1, px(p)) == 0)){
+		    k->from[dim_x] = px(p);
+		    k->from[dim_y] = py(p);
+		    k->cost = p->cost + 1;
+		    binheap_decrease_key(&h, k->hn);
+		  }
 
-	  if((l->hn) && (l->cost > p->cost) && (hardnessxy(px(p), py(p) + 1) == 0)){
-	    l->from[dim_x] = px(p);
-	    l->from[dim_y] = py(p);
-	    l->cost = p->cost + 1;
-	    binheap_decrease_key(&h, l->hn);
-	  }
+		  if((l->hn) && (l->cost > p->cost) && (hardnessxy(py(p) + 1, px(p)) == 0)){
+		    l->from[dim_x] = px(p);
+		    l->from[dim_y] = py(p);
+		    l->cost = p->cost + 1;
+		    binheap_decrease_key(&h, l->hn);
+		  }
 
-	  if((m->hn) && (m->cost > p->cost) && (hardnessxy(px(p) + 1, py(p)) == 0)){
-	    m->from[dim_x] = px(p);
-	    m->from[dim_y] = py(p);
-	    m->cost = p->cost + 1;
-	    binheap_decrease_key(&h, m->hn);
-	  }
+		  if((m->hn) && (m->cost > p->cost) && (hardnessxy(py(p), px(p) + 1) == 0)){
+		    m->from[dim_x] = px(p);
+		    m->from[dim_y] = py(p);
+		    m->cost = p->cost + 1;
+		    binheap_decrease_key(&h, m->hn);
+		  }
 
-	  if((r->hn) && (r->cost > p->cost) && (hardnessxy(px(p) + 1, py(p) - 1) == 0)){
-	    r->from[dim_x] = px(p);
-	    r->from[dim_y] = py(p);
-	    r->cost = p->cost + 1;
-	    binheap_decrease_key(&h, r->hn);
-	  }
+		  if((r->hn) && (r->cost > p->cost) && (hardnessxy(py(p) - 1, px(p) + 1) == 0)){
+		    r->from[dim_x] = px(p);
+		    r->from[dim_y] = py(p);
+		    r->cost = p->cost + 1;
+		    binheap_decrease_key(&h, r->hn);
+		  }
 
-	  if((a->hn) && (a->cost > p->cost) && (hardnessxy(px(p) - 1, py(p) - 1) == 0)){
-	    a->from[dim_x] = px(p);
-	    a->from[dim_y] = py(p);
-	    a->cost = p->cost + 1;
-	    binheap_decrease_key(&h, a->hn);
-	  }
+		  if((a->hn) && (a->cost > p->cost) && (hardnessxy(py(p) - 1, px(p) - 1) == 0)){
+		    a->from[dim_x] = px(p);
+		    a->from[dim_y] = py(p);
+		    a->cost = p->cost + 1;
+		    binheap_decrease_key(&h, a->hn);
+		  }
 
-	  if((b->hn) && (b->cost > p->cost) && (hardnessxy(px(p) - 1, py(p) + 1) == 0)){
-	    b->from[dim_x] = px(p);
-	    b->from[dim_y] = py(p);
-	    b->cost = p->cost + 1;
-	    binheap_decrease_key(&h, b->hn);
-	  }
+		  if((b->hn) && (b->cost > p->cost) && (hardnessxy(py(p) + 1, px(p) - 1) == 0)){
+		    b->from[dim_x] = px(p);
+		    b->from[dim_y] = py(p);
+		    b->cost = p->cost + 1;
+		    binheap_decrease_key(&h, b->hn);
+		  }
 
-	  if((c->hn) && (c->cost > p->cost) && (hardnessxy(px(p) + 1, py(p) + 1) == 0)){
-	    c->from[dim_x] = px(p);
-	    c->from[dim_y] = py(p);
-	    c->cost = p->cost + 1;
-	    binheap_decrease_key(&h, c->hn);
-	  }
+		  if((c->hn) && (c->cost > p->cost) && (hardnessxy(py(p) + 1, px(p) + 1) == 0)){
+		    c->from[dim_x] = px(p);
+		    c->from[dim_y] = py(p);
+		    c->cost = p->cost + 1;
+		    binheap_decrease_key(&h, c->hn);
+		  }
 
   }
 
