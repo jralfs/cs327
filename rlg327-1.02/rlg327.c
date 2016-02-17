@@ -692,7 +692,7 @@ void usage(char *name)
   exit(-1);
 }
 
-void print_tunnel(dungeon_t *d){
+/*void print_tunnel(dungeon_t *d){
 	int y, x;
   char cost[62]={'0','1','2','3','4','5','6','7','8','9',
   'a','b','c','d','e','f','g','h','i','j','k','l','m','n',
@@ -706,24 +706,8 @@ void print_tunnel(dungeon_t *d){
   	}
   	printf("\n");
   } 
-}
+}*/
 
-
-void print_nontunnel(dungeon_t *d){
-	int y, x;
-  char cost[62]={'0','1','2','3','4','5','6','7','8','9',
-    'a','b','c','d','e','f','g','h','i','j','k','l','m','n',
-    'o','p','q','r','s','t','u','v','w','x','y','z',
-    'A','B','C','D','E','F','G','H','I','J','K','L',
-    'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-	
-  for (y = 0; y < DUNGEON_Y; y++) {
-  	for (x = 0; x < DUNGEON_X; x++) {
-  		printf("%c", d->nonTunnel[y][x]);
-  	}
-  	printf("\n");
-  }
-}
 
 void set_PC(dungeon_t *d){
 	srand(time(NULL));
@@ -852,7 +836,6 @@ int main(int argc, char *argv[])
   set_PC(&d);
   render_dungeon(&d);
   dijkstra_nontunneling(&d);
-  print_nontunnel(&d);
 
   if (do_save) {
     write_dungeon(&d);
