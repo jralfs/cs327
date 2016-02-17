@@ -7,6 +7,10 @@
 #include "rlg327.h"
 #include "path.h"
 
+#define INFINITE 255
+#define px(p) (p->pos[dim_x])
+#define py(p) (p->pos[dim_y])
+
 
 typedef struct vertex {
   binheap_node_t *hn;
@@ -44,7 +48,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
   
   for (y = 0; y < DUNGEON_Y; y++) {
     for (x = 0; x < DUNGEON_X; x++) {
-      path[y][x].cost = INT_MAX;
+      path[y][x].cost = INFINITE;
     }
   }
 
@@ -66,7 +70,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     p->hn = NULL;
 
     vertex_t w = path[px(p) - 1][py(p)];
-    if((w.hn) && (w.cost > k->cost) && (hardness[px(p) - 1][py(p)] == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy[px(p) - 1][py(p)] == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
