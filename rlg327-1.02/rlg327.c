@@ -707,7 +707,7 @@ void print_nontunnel(dungeon_t *d){
   int y, x;
   for (y = 0; y < DUNGEON_Y; y++) {
     for (x = 0; x < DUNGEON_X; x++) {
-      printf("%c", d->tunnel[y][x]);
+      printf("%c", d->nonTunnel[y][x]);
     }
     printf("\n");
   } 
