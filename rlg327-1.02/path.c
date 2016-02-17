@@ -159,7 +159,7 @@ void dijkstra_nontunneling(dungeon_t *d)
 	
   for (y = 0; y < DUNGEON_Y; y++) {
 	  	for (x = 0; x < DUNGEON_X; x++) {
-	  		if(path[y][x].cost] <= 61){
+	  		if(path[y][x].cost <= 61){
 	  			d->nonTunnel[y][x] = cost[path[y][x].cost];
 	  		} else {
 	  			switch (mappair(p)) {
