@@ -57,39 +57,39 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 }
 
 void get_neighbors(vertex_t *v,   
-    binheap_node_t* arr[DUNGEON_Y][DUNGEON_X], 
-      neighbors *n){
+    binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
+  neighbors n;
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
-    &n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
+    n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
     //Bot Right
     if(v->position[dim_y] < 19){
-      &n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
+      n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
     }
     //Top Right
     if(v->position[dim_y] > 1){
-      &n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] + 1];
+      n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] + 1];
     }
   }
   //Left
   if(v->position[dim_x] > 1 && v->position[dim_x < 79]){
-    &n[left] = arr[v->position[dim_y]][v->position[dim_x]-1];
+    n[left] = arr[v->position[dim_y]][v->position[dim_x]-1];
     //Bot Left
     if(v->position[dim_y] < 19){
-      &n[bot_left] = arr[v->position[dim_y] + 1][v->position[dim_x] - 1];
+      n[bot_left] = arr[v->position[dim_y] + 1][v->position[dim_x] - 1];
     }
     //Top Left
     if(v->position[dim_y] > 1){
-      &n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] - 1];
+      n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] - 1];
     }
   }
   //Top
   if(v->position[dim_y] > 1){
-    &n[top] = arr[v->position[dim_y] - 1][v->position[dim_x]];
+    n[top] = arr[v->position[dim_y] - 1][v->position[dim_x]];
   }
   //Bottom
   if(v->position[dim_y] < 19){
-    &n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
+    n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
   }
 }
 
@@ -140,27 +140,14 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h,
 }
 
 void dijkstra_tunneling(dungeon_t *d){
-  int i = 0;
  	binheap_t *h = malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
 	init_dijkstra_tunnel(d, h, arr);
 
 	while(!binheap_is_empty(h)){
-    neighbors *n;
 		vertex_t *u = binheap_remove_min(h);
-		get_neighbors(u, arr, n);
-
-    for (i = 0; i < num_dir; i++){
-      if(n[i] != NULL){
-        vertex_t *v = (vertex_t *)n[i]->datum;
-        int alt = u->distance + calc_dist(v);
-
-        if (alt < v->distance){
-          v->distance = alt;
-        }
-      }
-    }
+		get_neighbors(u, arr);
 
 	}
 	binheap_delete(h);
