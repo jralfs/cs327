@@ -82,75 +82,75 @@ void dijkstra_nontunneling(dungeon_t *d)
 
 
 
-  /*while ((p = binheap_remove_min(&h))) {
+  while ((p = binheap_remove_min(&h))) {
 	  p->hn = NULL;
-	  vertex_t w;
+	  vertex_t *w;
 
-	  w = path[px(p) - 1][py(p)];
-	  if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w.from[dim_x] = px(p);
-	    w.from[dim_y] = py(p);
-	    w.cost = p->cost + 1;
+	  w = &path[px(p) - 1][py(p)];
+	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
+	    w->from[dim_x] = px(p);
+	    w->from[dim_y] = py(p);
+	    w->cost = p->cost + 1;
+	    binheap_decrease_key(&h, w->hn);
+	  }
+
+	  w = &path[px(p)][py(p)-1];
+	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
+	    w->from[dim_x] = px(p);
+	    w->from[dim_y] = py(p);
+	    w->cost = p->cost + 1;
+	    binheap_decrease_key(&h, w->hn);
+	  }
+
+	  w = &path[px(p)][py(p)+1];
+	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
+	    w->from[dim_x] = px(p);
+	    w->from[dim_y] = py(p);
+	    w->cost = p->cost + 1;
+	    binheap_decrease_key(&h, w->hn);
+	  }
+
+	  w = &path[px(p)+1][py(p)];
+	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
+	    w->from[dim_x] = px(p);
+	    w->from[dim_y] = py(p);
+	    w->cost = p->cost + 1;
+	    binheap_decrease_key(&h, w->hn);
+	  }
+
+	  w = &path[px(p)+1][py(p)-1];
+	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
+	    w->from[dim_x] = px(p);
+	    w->from[dim_y] = py(p);
+	    w->cost = p->cost + 1;
+	    binheap_decrease_key(&h, w->hn);
+	  }
+
+	  w = &path[px(p)-1][py(p)-1];
+	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
+	    w->from[dim_x] = px(p);
+	    w->from[dim_y] = py(p);
+	    w->cost = p->cost + 1;
+	    binheap_decrease_key(&h, w->hn);
+	  }
+
+	  w = &path[px(p)-1][py(p)+1];
+	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
+	    w->from[dim_x] = px(p);
+	    w->from[dim_y] = py(p);
+	    w->cost = p->cost + 1;
 	    binheap_decrease_key(&h, w.hn);
 	  }
 
-	  w = path[px(p)][py(p)-1];
-	  if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w.from[dim_x] = px(p);
-	    w.from[dim_y] = py(p);
-	    w.cost = p->cost + 1;
+	  w = &path[px(p)+1][py(p)+1];
+	  if((w->hn) && (w->cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
+	    w->from[dim_x] = px(p);
+	    w->from[dim_y] = py(p);
+	    w->cost = p->cost + 1;
 	    binheap_decrease_key(&h, w.hn);
 	  }
 
-	  w = path[px(p)][py(p)+1];
-	  if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w.from[dim_x] = px(p);
-	    w.from[dim_y] = py(p);
-	    w.cost = p->cost + 1;
-	    binheap_decrease_key(&h, w.hn);
-	  }
-
-	  w = path[px(p)+1][py(p)];
-	  if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w.from[dim_x] = px(p);
-	    w.from[dim_y] = py(p);
-	    w.cost = p->cost + 1;
-	    binheap_decrease_key(&h, w.hn);
-	  }
-
-	  w = path[px(p)+1][py(p)-1];
-	  if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w.from[dim_x] = px(p);
-	    w.from[dim_y] = py(p);
-	    w.cost = p->cost + 1;
-	    binheap_decrease_key(&h, w.hn);
-	  }
-
-	  w = path[px(p)-1][py(p)-1];
-	  if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w.from[dim_x] = px(p);
-	    w.from[dim_y] = py(p);
-	    w.cost = p->cost + 1;
-	    binheap_decrease_key(&h, w.hn);
-	  }
-
-	  w = path[px(p)-1][py(p)+1];
-	  if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w.from[dim_x] = px(p);
-	    w.from[dim_y] = py(p);
-	    w.cost = p->cost + 1;
-	    binheap_decrease_key(&h, w.hn);
-	  }
-
-	  w = path[px(p)+1][py(p)+1];
-	  if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
-	    w.from[dim_x] = px(p);
-	    w.from[dim_y] = py(p);
-	    w.cost = p->cost + 1;
-	    binheap_decrease_key(&h, w.hn);
-	  }
-
-  }*/
+  }
 
 /*  char cost[62]={'0','1','2','3','4','5','6','7','8','9',
     'a','b','c','d','e','f','g','h','i','j','k','l','m','n',
