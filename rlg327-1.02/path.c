@@ -95,36 +95,42 @@ void get_neighbors(vertex_t *v,
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
     n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
-    calc_tentative_dist(v, n[right]);
+    //calc_tentative_dist(v, n[right]);
     //Bot Right
     if(v->position[dim_y] < 19){
       n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
-      calc_tentative_dist(v, n[bot_right]);
+      //calc_tentative_dist(v, n[bot_right]);
     }
     //Top Right
     if(v->position[dim_y] > 1){
       n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] + 1];
+      //calc_tentative_dist(v, n[top_right]);
     }
   }
   //Left
   if(v->position[dim_x] > 1 && v->position[dim_x < 79]){
     n[left] = arr[v->position[dim_y]][v->position[dim_x]-1];
+    //calc_tentative_dist(v, n[left]);
     //Bot Left
     if(v->position[dim_y] < 19){
       n[bot_left] = arr[v->position[dim_y] + 1][v->position[dim_x] - 1];
+      //calc_tentative_dist(v, n[bot_left]);
     }
     //Top Left
     if(v->position[dim_y] > 1){
       n[top_right] = arr[v->position[dim_y] - 1][v->position[dim_x] - 1];
+      //calc_tentative_dist(v, n[top_left]);
     }
   }
   //Top
   if(v->position[dim_y] > 1){
     n[top] = arr[v->position[dim_y] - 1][v->position[dim_x]];
+    //calc_tentative_dist(v, n[top]);
   }
   //Bottom
   if(v->position[dim_y] < 19){
     n[bot] = arr[v->position[dim_y] + 1][v->position[dim_x]];
+    //calc_tentative_dist(v, n[bot]);
   }
 }
 
