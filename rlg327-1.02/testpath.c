@@ -7,8 +7,6 @@
 #include "rlg327.h"
 #include "path.h"
 
-#define px(p) (p->pos[dim_x])
-#define py(p) (p->pos[dim_y])
 
 typedef struct vertex {
   binheap_node_t *hn;
@@ -75,7 +73,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
       binheap_decrease_key(&h, w.hn);
     }
 
-    if ((p->pos[dim_y] == to[dim_y]) && p->pos[dim_x] == to[dim_x]) {
+    /*if ((p->pos[dim_y] == to[dim_y]) && p->pos[dim_x] == to[dim_x]) {
       for (x = to[dim_x], y = to[dim_y];
            (x != from[dim_x]) || (y != from[dim_y]);
            p = &path[y][x], x = p->from[dim_x], y = p->from[dim_y]) {
@@ -134,6 +132,6 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
       path[p->pos[dim_y] + 1][p->pos[dim_x]    ].from[dim_x] = p->pos[dim_x];
       heap_decrease_key_no_replace(&h, path[p->pos[dim_y] + 1]
                                            [p->pos[dim_x]    ].hn);
-    }
+    }*/
   }
 }
