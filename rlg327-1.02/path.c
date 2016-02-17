@@ -151,16 +151,39 @@ void dijkstra_nontunneling(dungeon_t *d)
 
   }
 
-/*  char cost[62]={'0','1','2','3','4','5','6','7','8','9',
+  char cost[62]={'0','1','2','3','4','5','6','7','8','9',
     'a','b','c','d','e','f','g','h','i','j','k','l','m','n',
     'o','p','q','r','s','t','u','v','w','x','y','z',
     'A','B','C','D','E','F','G','H','I','J','K','L',
     'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 	
   for (y = 0; y < DUNGEON_Y; y++) {
-  	for (x = 0; x < DUNGEON_X; x++) {
-  		printf("%c", cost[path[y][x].cost]);
-  	}
-  	printf("\n");
-  }*/
+	  	for (x = 0; x < DUNGEON_X; x++) {
+	  		if(path[y][x].cost] <= 61){
+	  			d->nonTunnel[y][x] = cost[path[y][x].cost];
+	  		} else {
+	  			switch (mappair(p)) {
+	      		case ter_wall:
+	      		case ter_wall_immutable:
+	       		 	d->nonTunnel[y][x] = ' ';
+	        		break;
+	      		case ter_floor:
+	      		case ter_floor_room:
+					d->nonTunnel[y][x] = '.';
+	        		break;
+	      		case ter_floor_hall:
+	       		 	d->nonTunnel[y][x] = '#';
+	        		break;
+	     		case ter_debug:
+	        		printf("Debug character at %d, %d\n", p[dim_y], p[dim_x]);
+	        		putchar('*');
+	       		break;
+	      		}
+	  		}
+	  		
+	  	}
+	  	printf("\n");
+	}
+
+	binheap_delete(&h);
 }
