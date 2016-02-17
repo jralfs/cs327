@@ -707,12 +707,10 @@ void print_nontunnel(dungeon_t *d){
   int y, x;
   for (y = 0; y < DUNGEON_Y; y++) {
     for (x = 0; x < DUNGEON_X; x++) {
-      if(mapxy(x,y) == ter_floor_room || 
-        mapxy(x,y) == ter_floor_hall ||
-        mapxy(x,y) == ter_floor){
+      if(mapxy(x,y) != ter_wall &&
+        mapxy(x,y) != ter_wall_immutable){
         printf("%c", d->nonTunnel[y][x]);        
       }
-
     }
     printf("\n");
   } 

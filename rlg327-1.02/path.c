@@ -180,7 +180,6 @@ void dijkstra_nontunneling(dungeon_t *d)
 	  		}
 	  		
 	  	}
-	  	printf("\n");
 	}
 
 	binheap_delete(&h);
