@@ -10,7 +10,7 @@
 #define INFINITE 255
 #define px(p) (p->pos[dim_x])
 #define py(p) (p->pos[dim_y])
-#define w  (&path[px(p) - 1][py(p)]);
+#define w  (&path[px(p) - 1][py(p)])
 
 
 typedef struct vertex {
