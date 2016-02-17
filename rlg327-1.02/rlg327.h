@@ -8,6 +8,7 @@ extern "C" {
 #define DUNGEON_X   80
 #define DUNGEON_Y   21
 #define mapxy(x, y) (d->map[y][x])
+#define mappair(pair) (d->map[pair[dim_y]][pair[dim_x]])
 #define hardnessxy(x, y) (d->hardness[y][x])
 
 typedef enum dim {

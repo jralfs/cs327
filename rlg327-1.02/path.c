@@ -174,10 +174,6 @@ void dijkstra_nontunneling(dungeon_t *d)
 	      		case ter_floor_hall:
 	       		 	d->nonTunnel[y][x] = '#';
 	        		break;
-	     		case ter_debug:
-	        		printf("Debug character at %d, %d\n", p[dim_y], p[dim_x]);
-	        		putchar('*');
-	       		break;
 	      		}
 	  		}
 	  		
