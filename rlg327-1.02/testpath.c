@@ -71,7 +71,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     vertex_t w;
 
     w = path[px(p) - 1][py(p)];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
@@ -79,7 +79,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     }
     
     w = path[px(p)][py(p)-1];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
@@ -87,7 +87,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     }
 
     w = path[px(p)][py(p)+1];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
@@ -95,7 +95,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     }
 
     w = path[px(p)+1][py(p)];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
@@ -103,7 +103,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     }
 
     w = path[px(p)+1][py(p)-1];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
@@ -111,7 +111,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     }
 
     w = path[px(p)-1][py(p)-1];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
@@ -119,7 +119,7 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     }
 
     w = path[px(p)-1][py(p)+1];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
@@ -127,13 +127,12 @@ void dijkstra_corridor(dungeon_t *d, pair_t from)
     }
 
     w = path[px(p)+1][py(p)+1];
-    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1,[py(p)) == 0)){
+    if((w.hn) && (w.cost > p->cost) && (hardnessxy(px(p) - 1, py(p)) == 0)){
       w.from[dim_x] = px(p);
       w.from[dim_y] = py(p);
       w.cost = p->cost + 1;
       binheap_decrease_key(&h, w.hn);
     }
-
 
   }
 }
