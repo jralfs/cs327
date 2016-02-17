@@ -845,8 +845,8 @@ int main(int argc, char *argv[])
   if (do_save) {
     write_dungeon(&d);
   }
-    
-    delete_dungeon(&d);
+
+ delete_dungeon(&d);
 
 
   return 0;

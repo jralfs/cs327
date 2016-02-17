@@ -55,6 +55,46 @@ vertex_t *create_vertex(dungeon_t *d, int x, int y, uint32_t distance){
 	v->distance = distance;
 	return v;
 }
+int calc_dist(vertex_t *v){
+  if(v != NULL){
+    if(v->hardness == 0){
+      return 1;
+    }
+    else if(v->hardness >= 1 && v->hardness <= 84){
+      return 1;
+    }
+    else if (v->hardness >= 84 && v->hardness <= 170){
+      return 2;
+    }    
+    else if (v->hardness >= 171 && v->hardness <= 254){
+      return 3;
+    }
+    else{
+      printf("hardness is: %d, don't put in queue\n", v->hardness);
+      printf("x: %d, y: %d\n", v->position[dim_x], v->position[dim_y]);
+      return 0;
+    }
+  }
+  else {
+    printf("Node was null\n");
+    return 0;
+  }
+}
+
+void calc_tentative_dist(vertex_t *key, vertex_t *with){
+  int alt = key->distance + calc_dist(with);
+  if (alt < with->distance){
+    with->distance = alt;
+  }
+}
+
+void calc_tentative_dist(vertex_t *key, binheap_node_t *h){
+  vertex *with = (vertex *)h->datum;
+  int alt = key->distance + calc_dist(with);
+  if (alt < with->distance){
+    with->distance = alt;
+  }
+}
 
 void get_neighbors(vertex_t *v,   
     binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
@@ -62,9 +102,11 @@ void get_neighbors(vertex_t *v,
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
     n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
+    calc_tentative_dist(v, n[right]);
     //Bot Right
     if(v->position[dim_y] < 19){
       n[bot_right] = arr[v->position[dim_y] + 1][v->position[dim_x] + 1];
+      calc_tentative_dist(v, n[bot_right]);
     }
     //Top Right
     if(v->position[dim_y] > 1){
@@ -93,31 +135,7 @@ void get_neighbors(vertex_t *v,
   }
 }
 
-int calc_dist(vertex_t *v){
-  if(v != NULL){
-    if(v->hardness == 0){
-      return 1;
-    }
-    else if(v->hardness >= 1 && v->hardness <= 84){
-      return 1;
-    }
-    else if (v->hardness >= 84 && v->hardness <= 170){
-      return 2;
-    }    
-    else if (v->hardness >= 171 && v->hardness <= 254){
-      return 3;
-    }
-    else{
-      printf("hardness is: %d, don't put in queue\n", v->hardness);
-      printf("x: %d, y: %d\n", v->position[dim_x], v->position[dim_y]);
-      return 0;
-    }
-  }
-  else {
-    printf("Node was null\n");
-    return 0;
-  }
-}
+
 
 void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h, 	
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
