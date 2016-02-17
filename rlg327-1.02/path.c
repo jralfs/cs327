@@ -37,7 +37,7 @@ void print_binheap(binheap_t *h){
 }
 
 void data_delete(void *v){
-  free(v);
+
 }
 
 int32_t compare_data(const void *key, const void *with){
@@ -45,6 +45,11 @@ int32_t compare_data(const void *key, const void *with){
     const vertex_t *wKey = with;
     return vKey->cost - wKey->cost;
  }
+
+
+
+
+
 
 void dijkstra_nontunneling(dungeon_t *d){
   pair_t from;
@@ -86,8 +91,6 @@ void dijkstra_nontunneling(dungeon_t *d){
     	}
   	}
   }
-
-
 
   while ((p = binheap_remove_min(&h))) {
 	  p->hn = NULL;
@@ -184,6 +187,12 @@ void dijkstra_nontunneling(dungeon_t *d){
 
 	binheap_delete(&h);
 }
+
+
+
+
+
+
 
 void dijkstra_tunneling(dungeon_t *d){
 	pair_t from;
