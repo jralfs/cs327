@@ -92,6 +92,7 @@ void calc_tentative_dist(vertex_t *key, binheap_node_t *h){
 void get_neighbors(vertex_t *v,   
     binheap_node_t* arr[DUNGEON_Y][DUNGEON_X]){
   neighbors n;
+  n = NULL;
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
     n[right] = arr[v->position[dim_y]][v->position[dim_x] + 1];
