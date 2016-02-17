@@ -14,7 +14,7 @@
 #define k  	(&path[px(p)][py(p) - 1])
 #define	l 	(&path[px(p)][py(p) + 1])
 #define m 	(&path[px(p) + 1][py(p)])
-#define n 	(&path[px(p) + 1][py(p)  - 1])
+#define r 	(&path[px(p) + 1][py(p)  - 1])
 #define a 	(&path[px(p) - 1][py(p)  - 1])
 #define b 	(&path[px(p) - 1][py(p)  + 1])
 #define c 	(&path[px(p) + 1][py(p)  + 1])
@@ -123,11 +123,11 @@ void dijkstra_nontunneling(dungeon_t *d)
 	    binheap_decrease_key(&h, m->hn);
 	  }
 
-	  if((n->hn) && (n->cost > p->cost) && (hardnessxy(px(p) + 1, py(p) - 1) == 0)){
-	    n->from[dim_x] = px(p);
-	    n->from[dim_y] = py(p);
-	    n->cost = p->cost + 1;
-	    binheap_decrease_key(&h, n->hn);
+	  if((r->hn) && (r->cost > p->cost) && (hardnessxy(px(p) + 1, py(p) - 1) == 0)){
+	    r->from[dim_x] = px(p);
+	    r->from[dim_y] = py(p);
+	    r->cost = p->cost + 1;
+	    binheap_decrease_key(&h, r->hn);
 	  }
 
 	  if((a->hn) && (a->cost > p->cost) && (hardnessxy(px(p) - 1, py(p) - 1) == 0)){
