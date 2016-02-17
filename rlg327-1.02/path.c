@@ -44,7 +44,8 @@ void dijkstra_nontunneling(dungeon_t *d)
   from[dim_x] = d->PC[dim_x];
   from[dim_y] = d->PC[dim_y];
   
-  static vertex_t path[DUNGEON_Y][DUNGEON_X], *p;
+  static vertex_t path[DUNGEON_Y][DUNGEON_X];
+  //static vertex_t *p;
   static uint32_t initialized = 0;
   binheap_t h;
   uint32_t x, y;
