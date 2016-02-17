@@ -847,7 +847,7 @@ int main(int argc, char *argv[])
   //printf("here\n");
 
   dijkstra_tunneling(&d);
-  //print_tunnel(&d);
+  print_tunnel(&d);
 
   if (do_save) {
     write_dungeon(&d);
