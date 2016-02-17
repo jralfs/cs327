@@ -162,7 +162,7 @@ void dijkstra_nontunneling(dungeon_t *d)
 	  		if(path[y][x].cost <= 61){
 	  			d->nonTunnel[y][x] = cost[path[y][x].cost];
 	  		} else {
-	  			switch (mapppair(path[y][x].pos)) {
+	  			switch (mappair(path[y][x].pos)) {
 	      		case ter_wall:
 	      		case ter_wall_immutable:
 	       		 	d->nonTunnel[y][x] = ' ';
