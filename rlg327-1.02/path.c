@@ -96,11 +96,11 @@ void get_neighbors(vertex_t *v,
   //Right 
   if(v->position[dim_x] > 0 && v->position[dim_x] < 78){
     memcpy(n[right], arr[v->position[dim_y]][v->position[dim_x] + 1], sizeof(*arr[v->position[dim_y]][v->position[dim_x] + 1]));
-    calc_tentative_dist(v, n[right]);
+    //calc_tentative_dist(v, n[right]);
     //Bot Right
     if(v->position[dim_y] < 19){
       memcpy(n[bot_right], arr[v->position[dim_y] + 1][v->position[dim_x] + 1], sizeof(*arr[v->position[dim_y] + 1][v->position[dim_x] + 1]));
-      calc_tentative_dist(v, n[bot_right]);
+      //calc_tentative_dist(v, n[bot_right]);
     }
     //Top Right
     if(v->position[dim_y] > 1){
@@ -158,7 +158,8 @@ void init_dijkstra_tunnel(dungeon_t *d, binheap_t *h,
 }
 
 void dijkstra_tunneling(dungeon_t *d){
- 	binheap_t *h = malloc(sizeof(*h));
+ 	int i = 0;
+  binheap_t *h = malloc(sizeof(*h));
 	binheap_init(h, compare_data, data_delete);
 	binheap_node_t* arr[DUNGEON_Y][DUNGEON_X];
 	init_dijkstra_tunnel(d, h, arr);
@@ -167,6 +168,11 @@ void dijkstra_tunneling(dungeon_t *d){
 	while(!binheap_is_empty(h)){
 		vertex_t *u = binheap_remove_min(h);
 		get_neighbors(u, arr, &n);
+    for(i = 0; i < num_dir; i++){
+      if(n[i] != null){
+        calc_tentative_dist(u, n[i]);
+      }
+    }
 
 	}
 	binheap_delete(h);
