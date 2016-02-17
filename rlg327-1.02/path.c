@@ -83,10 +83,12 @@ int calc_dist(vertex_t *v){
 
 void calc_tentative_dist(vertex_t *key, binheap_node_t *h){
   vertex_t *with = (vertex_t *)h->datum;
+  printf("X: %d, Y: %d", with->position[dim_x, with->position[dim_y]]);
+  /*
   int alt = key->distance + calc_dist(with);
   if (alt < with->distance){
     with->distance = alt;
-  }
+  }*/
 }
 
 void get_neighbors(vertex_t *v,   
